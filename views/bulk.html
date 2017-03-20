@@ -29,7 +29,7 @@
 
   $("#send").click(function () {
       $.ajax({
-      url: "http://localhost:8082/order/1",
+      url: "../public/bulk",
       contentType: "application/json",
       method: 'POST',
       data: JSON.stringify(["first","second"])
