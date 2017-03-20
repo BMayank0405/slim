@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('textarea').blur(function () {
+    var csv = $('textarea').val();
+    csv = csv.split(',');
+    var obj = new object();
+    obj = JSON.stringify(csv);
+    });
+  //$('submit').click(function ({
+  // $.ajax({
+  //  url:"http://localhost/rest_api/public/bulk",
+  // dataType: "json",
+  // contentType: "application/json",
+  //type:'POST',
+  //data: jQuery.param({ field1: "hello", field2 : "hello2"})
+  // }),
+  //success: function (response) {
+  // alert(response.status);
+  //}
+  //error: function () {
+  //alert("error");
+  //}
+
+  /*$.post("../public/bulk",["mayank","second"],"json");*/
+
+  $("#send").click(function () {
+      $.ajax({
+      url: "http://localhost:80/rest_api/public/bulk",
+      dataType: "json",
+      crossDomain :true,
+      contentType: "application/json;charset=utf-8",
+      type: 'POST',
+      data:{"first":"second"}
+      })
+      .done(function(result) { alert(result); })
+      .fail(function( xhr, textStatus ) { alert( "Request failed: " + xhr.status );
+      });
+  });
+});
+</script>
+</head>
+<body>
+  <form>
+    <textarea name="string" id="myfield" > </textarea>
+    <input type="submit" value="click"  id="send"/>
+  </form>
+</body>
+</html>
